@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-__author__ = 'Jasmyne with help from 101computer.net'
+__author__ = 'Jasmyne with help from 101computer.net and JT'
 import json
 import turtle
 import urllib.request
