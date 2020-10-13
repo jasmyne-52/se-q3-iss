@@ -29,8 +29,19 @@ def indipassing():
         print("The ISS will be over Indianapolis on " + date_time)
 
 
+def currentlocation():
+    url = "http://api.open-notify.org/iss-now.json"
+    response = urllib.request.urlopen(url)
+
+    obj = json.loads(response.read())
+
+    print("The current time is " + str(time.ctime(obj['timestamp'])))
+    print("The space station is currently at " + obj['iss_position']['latitude'] + "lat,", obj['iss_position']['longitude'] + "long")
+
+
 def main():
     indipassing()
+    currentlocation()
     screen = turtle.Screen()
     screen.setup(720, 360)
     screen.setworldcoordinates(-180, -90, 180, 90)
@@ -38,21 +49,9 @@ def main():
     screen.register_shape("iss.gif")
     iss = turtle.Turtle()
     iss.shape("iss.gif")
-    iss.setheading(45)
-    iss.penup()
-
-    # while True:
-    #     url = "http://api.open-notify.org/iss-now.json"
-    #     response = urllib.request.urlopen(url)
-    #     result = json.loads(response.read())
-
-    #     location = result["iss_position"]
-    #     lat = location["latitude"]
-    #     lon = location["longitude"]
-    # print("\nLatitude: " + str(lat))
-    # print("Longitude: " + str(lon))
-    # iss.goto(lon, lat)
-    # time.sleep(5)
+    turtle.done()
+    # iss.setheading(45)
+    # iss.penup()
 
 
 if __name__ == '__main__':
